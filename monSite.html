@@ -8,9 +8,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: rgb(252 96 5 / 20%);
             margin: 0;
-            padding: 20px;
+            padding: 5px;
         }
 
         h1, h2 {
@@ -57,7 +56,7 @@
 
         .kpi-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 20px;
         }
 
@@ -81,7 +80,6 @@
             display: block;
             font-size: 1.5em;
             margin-bottom: 10px;
-            margin-top: 50px; /* Space for the icon */
         }
 
         .kpi.NPS {
@@ -105,11 +103,70 @@
         }
 
         .kpi img {
-            max-width: 100%;  /* Max width for the image */
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
+    max-width: 100%;  /* Max width for the image */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+    /* Style du conteneur de la bascule */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 25px;
+    }
+
+    /* Case à cocher cachée */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* Fond de la bascule */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 25px;
+    }
+
+    /* Poignée de la bascule */
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 19px;
+        width: 19px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+
+    /* État activé (oui) */
+    input:checked + .slider {
+        background-color: #4CAF50;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(25px);
+    }
+
+    /* Texte Oui/Non */
+    .switch-label {
+        margin-left: 10px;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
     </style>
 </head>
 <body>
@@ -134,47 +191,84 @@
             </table>
         </section>
         <section class="opportunity" style="margin-bottom: 5px; padding-bottom: 5px; padding-top: 10px; height: 30px; background-color: rgb(252 96 5 /70%);">
-            <h2><i class="fas fa-chart-bar"></i>KPI et Indicateurs</h2>
+            <h2><i class="fas fa-chart-bar"></i>KPI et Indicateurs du compte</h2>
         </section>
-        <section class="kpi-section" style="background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
-            <div class="kpi-container">
-                <div class="kpi NPS">
-                    <i class="fas fa-chart-line"></i>
-                    <span>NPS</span>
-                    <strong>75%</strong>
-                </div>
-                <div class="kpi CSAT">
-                    <i class="fas fa-smile"></i>
-                    <span>CSAT</span>
-                    <strong>85%</strong>
-                </div>
-                <div class="kpi ARPU">
-                    <i class="fas fa-dollar-sign"></i>
-                    <span>ARPU</span>
-                    <strong>35 MAD</strong>
-                </div>
-                <div class="kpi MP">
-                    <i class="fas fa-percent"></i>
-                    <span>MP</span>
-                    <strong>45%</strong>
-                </div>
-            </div>
+        <section class="kpi-container">
+    <div class="kpi NPS">
+        <img src="/WebResources/msfr_arpuicon" alt="NPS" class="icon"> <!-- Remplacer par votre image NPS -->
+        <span>NPS</span>
+        <strong>75%</strong>
+    </div>
+    <div class="kpi CSAT">
+        <img src="/WebResources/msfr_csaticon" alt="CSAT" class="icon"> <!-- Remplacer par votre image CSAT -->
+        <span>CSAT</span>
+        <strong>85%</strong>
+    </div>
+    <div class="kpi ARPU">
+        <img src="/WebResources/msfr_arpuicon" alt="ARPU" class="icon"> <!-- Remplacer par votre image ARPU -->
+        <span>ARPU</span>
+        <strong>350000 MAD</strong>
+    </div>
+</section>
+
+        <section class="opportunity" style="margin-top: 10px;margin-bottom: 5px; padding-bottom: 5px; padding-top: 10px; height: 30px; background-color: rgb(252 96 5 /70%);">
+            <h2><i class="fas fa-arrow-up"></i>Cross-Sell Recommendations</h2>
         </section>
-        <section class="opportunity" style="margin-bottom: 5px; padding-bottom: 5px; padding-top: 10px; height: 30px; background-color: rgb(252 96 5 /70%);">
-            <h2><i class="fas fa-arrow-up"></i>Upsell or Cross-Sell Recommendations</h2>
-        </section>
-        <section class="kpi-section" style="background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
-            <div class="kpi-container">
-                <div class="kpi NPS" id="product1">
-                    <!-- Just an image for Product 1 -->
-                    <img src="product1.png" alt="Product 1">
-                </div>
-                <div class="kpi CSAT" id="product2">
-                    <!-- Just an image for Product 2 -->
-                    <img src="product2.png" alt="Product 2">
-                </div>
-            </div>
-        </section>
+        <section class="opportunity">
+    <table>
+        <tr>
+            <th>Offre Fixe</th>
+            <td>
+                <label class="switch">
+                    <input type="checkbox" name="sujet">
+                    <span class="slider"></span>
+                </label>
+                <span class="switch-label">Oui / Non</span>
+            </td>
+        </tr>
+        <tr>
+            <th>Offre Mobile</th>
+            <td>
+                <label class="switch">
+                    <input type="checkbox" name="cible">
+                    <span class="slider"></span>
+                </label>
+                <span class="switch-label">Oui / Non</span>
+            </td>
+        </tr>
+        <tr>
+            <th>Offre ICT</th>
+            <td>
+                <label class="switch">
+                    <input type="checkbox" name="valeur">
+                    <span class="slider"></span>
+                </label>
+                <span class="switch-label">Oui / Non</span>
+            </td>
+        </tr>
+		<tr>
+            <th>Offre M2M</th>
+            <td>
+                <label class="switch">
+                    <input type="checkbox" name="valeur">
+                    <span class="slider"></span>
+                </label>
+                <span class="switch-label">Oui / Non</span>
+            </td>
+        </tr>
+		<tr>
+            <th>Offre Terminaux</th>
+            <td>
+                <label class="switch">
+                    <input type="checkbox" name="valeur">
+                    <span class="slider"></span>
+                </label>
+                <span class="switch-label">Oui / Non</span>
+            </td>
+        </tr>
+    </table>
+</section>
+
     </div>
 </body>
 </html>
